@@ -12,7 +12,9 @@ env:
 jobs:
   test:
     name: Test Suite and Code Quality
-    runs-on: ubuntu-latest
+    # Pinned: ubuntu-latest (26.04) ships a GCC that fails to build the bundled
+    # mimalloc 1.7.9 in mimalloc-rust-sys (ATOMIC_VAR_INIT errors).
+    runs-on: ubuntu-24.04
 
     steps:
     - name: Checkout repository
